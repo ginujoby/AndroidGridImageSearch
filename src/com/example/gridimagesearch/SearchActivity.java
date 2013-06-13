@@ -1,11 +1,5 @@
 package com.example.gridimagesearch;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -14,6 +8,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -118,7 +113,7 @@ public class SearchActivity extends Activity {
 	}
 
 	private void writeSettings() {
-		File filesDir = getFilesDir();
+		/*File filesDir = getFilesDir();
 		
 		try {
 			File settingsFile = new File(filesDir, "settings.ser");
@@ -128,11 +123,19 @@ public class SearchActivity extends Activity {
 			oos.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
+		
+		SharedPreferences sp = getSharedPreferences("ImageSearchPrefs", MODE_PRIVATE);
+		SharedPreferences.Editor ed = sp.edit();
+		ed.putString("size", this.settings.getImageSize());
+		ed.putString("color", this.settings.getColorFilter());
+		ed.putString("type", this.settings.getImageType());
+		ed.putString("site", this.settings.getSiteFilter());
+		ed.commit();
 	}
 	
 	private void readSettings() {
-		File filesDir = getFilesDir();
+		/*File filesDir = getFilesDir();
 		
 		try {
 			File settingsFile = new File(filesDir, "settings.ser");
@@ -144,7 +147,17 @@ public class SearchActivity extends Activity {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}
+		}*/
+		
+		SharedPreferences sp = getSharedPreferences("ImageSearchPrefs", android.content.Context.MODE_PRIVATE);
+		
+		String imageSize = sp.getString("size", "");
+		String colorFilter = sp.getString("color", "");
+		String imageType = sp.getString("type", "");
+		String siteFilter = sp.getString("site", "");
+
+		this.settings = new SearchSettings(imageSize, colorFilter, imageType, siteFilter);
+		
 	}
 	
 	private void setupViews() {
