@@ -41,6 +41,7 @@ public class SearchActivity extends Activity {
 	ImageResultArrayAdapter imageAdapter;
 	SearchSettings settings = new SearchSettings();
 	int start = 0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,6 +53,7 @@ public class SearchActivity extends Activity {
 		imageAdapter = new ImageResultArrayAdapter(this, imageResults);
 		gvResults.setAdapter(imageAdapter);
 		gvResults.setOnItemClickListener(new OnItemClickListener() {
+			
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View parent,
 					int position, long rowId) {
@@ -60,6 +62,24 @@ public class SearchActivity extends Activity {
 				ImageResult imageResult = imageResults.get(position);
 				i.putExtra("result", imageResult);
 				startActivity(i);
+			}
+		});
+		
+		etQuery.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				resetSearch();
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+				// TODO Auto-generated method stub
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
 			}
 		});
 	}
@@ -127,32 +147,11 @@ public class SearchActivity extends Activity {
 		}
 	}
 	
-	public void setupViews() {
+	private void setupViews() {
 		etQuery = (EditText) findViewById(R.id.etQuery);
 		gvResults = (GridView) findViewById(R.id.gvResults);
 		btnSearch = (Button) findViewById(R.id.btnSearch);
 		btnLoadMore = (Button) findViewById(R.id.btnLoadMore);
-		
-		etQuery.addTextChangedListener(new TextWatcher() {
-			
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				resetSearch();
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
 	}
 
 	public void onImageSearch(View v) {
