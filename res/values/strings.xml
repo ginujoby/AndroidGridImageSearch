@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GridImageSearch</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="query_hint">Enter Search Term</string>
+    <string name="title_activity_image_display">ImageDisplayActivity</string>
+    <string name="search_label">Search</string>
+    <string name="title_activity_search_settings">SearchSettingsActivity</string>
+    <string name="advanced_search_settings">Advanced Search Settings</string>
+    <string name="image_size_label">Image Size</string>
+    <string name="color_filter_label">Color Filter</string>
+    <string name="image_type_label">Image Type</string>
+    <string name="site_filter_label">Site Filter</string>
+    <string name="site_filter_hint">yahoo.com</string>
+    <string name="save_label">Save</string>
+    <string name="clear_label">Clear</string>
+    <string name="load_more_label">Load More</string>
+
+    <string-array name="image_size_array">
+        <item>small</item>
+        <item>medium</item>
+        <item>large</item>
+        <item>xlarge</item>
+        <item>xxlarge</item>
+        <item>huge</item>
+    </string-array>
+    <string-array name="color_array">
+        <item>black</item>
+        <item>blue</item>
+        <item>brown</item>
+        <item>gray</item>
+        <item>green</item>
+        <item>orange</item>
+        <item>pink</item>
+        <item>purple</item>
+        <item>red</item>
+        <item>teal</item>
+        <item>white</item>
+        <item>yellow</item>
+    </string-array>
+    <string-array name="image_type_array">
+        <item>face</item>
+        <item>photo</item>
+        <item>clipart</item>
+        <item>lineart</item>
+    </string-array>
+
+</resources>
